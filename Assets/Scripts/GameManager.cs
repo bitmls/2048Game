@@ -42,6 +42,15 @@ public class GameManager : MonoBehaviour
         StartCoroutine(Fade(gameOver, 1.0f, 1.0f));
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
+
     private IEnumerator Fade(CanvasGroup canvasGroup, float to, float delay)
     {
         yield return new WaitForSeconds(delay);
